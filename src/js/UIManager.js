@@ -35,12 +35,13 @@ export default class UIManager {
 
   onCreateFile(e) {
     let files;
-    if (e.dataTransfer.files.lenght !== 0) {
-      files = e.dataTransfer.files;
-    } else {
+    if ('files' in e.currentTarget) {
       files = e.currentTarget.files;
+      this.createFileListeners.forEach((o) => o.call(null, files[0]));
+    } else if (e.dataTransfer.files.length > 0) {
+      files = e.dataTransfer.files;
+      this.createFileListeners.forEach((o) => o.call(null, files[0]));
     }
-    this.createFileListeners.forEach((o) => o.call(null, files[0]));
   }
 
   registerImageEvents(element) {

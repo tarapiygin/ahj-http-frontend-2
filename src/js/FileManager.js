@@ -4,7 +4,7 @@ export default class FileManager {
   constructor() {
     this.imageObjList = [];
     this.UIManager = new UIManager();
-    this.url = 'https://file-manager-node-js.herokuapp.com/'; // heroku
+    this.url = 'https://file-manager-node-js.herokuapp.com/'; // 'http://localhost:7070/';
     this.registerEvents();
   }
 
